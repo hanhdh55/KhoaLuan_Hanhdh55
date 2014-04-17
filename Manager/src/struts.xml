@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="default" extends="struts-default" >
+        <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<action name="*Link" method="{1}" class="com.action.LinkAction">
+			<result name="login" type="tiles">login</result>
+			<result name="first" type="tiles">first</result>
+		</action>
+		
+		<action name="showArticle" class="com.action.ArticleAction" method="Retrieve">
+			<result name="success1" type="tiles">listResult</result>
+			<result name="success" type="tiles">listResults</result>
+			<result name="success2" type="tiles">article</result>
+			<result name="success3" type="tiles">listResults2</result>
+		</action>
+		<action name="retrieveAContent" class="com.action.ArticleAction" method="RetrieveAContent">
+		    <result name="success" type="tiles">sourceCode</result>
+		</action>
+		
+		<action name="loginAction" class="com.action.AuthenticateAction" method="login">
+			<result name="error" type="tiles">login</result>
+			<result name="success" type="tiles">welcome</result>
+		</action>
+		<action name="logoutAction" class="com.action.AuthenticateAction" method="logout">
+			<result name="success" type="tiles">login</result>
+		</action>
+		<action name="registerPage" class="com.action.AuthenticateAction" method="registerPage">
+			<result name="success" type="tiles">registerPage</result>
+		</action>
+		<action name="register" class="com.action.AuthenticateAction" method="register">
+		    <result name="error" type="tiles">registerPage</result>
+			<result name="success" type="tiles">login</result>
+		</action>
+    </package>
+</struts>
+
